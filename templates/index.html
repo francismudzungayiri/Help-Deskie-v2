@@ -1,0 +1,134 @@
+
+{% extends './layouts/base.html'  %}
+{% block content %}
+    <nav
+      class="w-full bg-main-color px-[10%] pb-3 pt-5 flex flex-row justify-between items-center fixed top-0 z-50 shadow bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20"
+    >
+      <a href="#" class="text-2xl font-extrabold font-headings-play"
+        >Help <span class="text-accent-color">Deskie</span></a
+      >
+      <div
+        id="nav-links"
+        class="w-[40%] font-medium text-lg flex justify-between"
+      >
+        <a href="#" class="hover:text-accent-color">Home</a>
+        <a href="#" class="hover:text-accent-color">Services</a>
+        <a href="#" class="hover:text-accent-color">Blog</a>
+        <a href="#" class="hover:text-accent-color">About us</a>
+      </div>
+      <a href="{{ url_for('login')  }}"
+        class="bg-transparent border-2 border-navy-blue text-base px-10 py-1 text-navy-blue rounded-2xl cursor-pointer hover:-translate-y-1"
+      >
+        Login
+    </a>
+    </nav>
+    <section id="hero" class="pt-[15%] pb-[5%] max-w-[80%] mx-auto">
+      <p class="max-w-8/12 font-extrabold text-7xl font-headings-play">
+        A digital staff scheduling platform
+        <span class="text-accent-color">built for you.</span>
+      </p>
+      <p class="max-w-7/12 font-medium text-4xl mt-10">
+        The first predictive staff scheduling platform designed specifically for
+        the ministry works
+      </p>
+      <div class="relative w-fit group">
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-r from-accent-color to-purple-600 rounded-lg blur opacity-100 group-hover:-inset-1 transition duration-200"
+        ></div>
+        <button
+          class="relative bg-main-color text-base font-medium mt-10 px-10 py-6 text-accent-color rounded-lg cursor-pointer leading-0 flex group-hover:-translate-y-1 transition duration-200"
+        >
+          <span class="text-navy-blue pr-2">Facing a Challenge ?</span>
+          <span
+            class="text-gold pl-2 group-hover:text-navy-blue transition duration-200"
+            >Contact ICT &rarr;</span
+          >
+        </button>
+      </div>
+    </section>
+    <section
+      id="contact-ict"
+      class="h-[100vh] flex w-[80%] pt-[5%] mx-auto gap-10"
+    >
+      <div id="left-box" class="w-[40%]">
+        <img src="{{   url_for('static', filename='img/problem3.jpg')  }}" alt="" class="h-10/12 rounded-2xl" />
+      </div>
+      <div id="rightbox" class="w-[60%] pt-[2%]">
+        <p class="max-w-10/12 font-medium text-4xl mt-10 mb-[8%]">
+          Let ICT know what
+          <span
+            class="bg-gradient-to-r from-gold to-purple-600 text-transparent bg-clip-text"
+            >challenge</span
+          >
+          you are facing today.
+        </p>
+        <form action="#" method="post">
+          <div id="input-row" class="flex gap-3">
+            <div class="relative w-1/2">
+              <input
+                id="fuul-name"
+                type="email"
+                class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+                placeholder=""
+              />
+              <label
+                for="full-name"
+                class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+                >Name Surname</label
+              >
+            </div>
+            <div class="relative w-1/2">
+              <input
+                id="fuul-name"
+                type="email"
+                class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+                placeholder=""
+              />
+              <label
+                for="full-name"
+                class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+                >Office Number</label
+              >
+            </div>
+          </div>
+          <div id="input-row" class="flex gap-3 mt-6">
+            <div class="relative w-1/2">
+              <input
+                id="fuul-name"
+                type="email"
+                class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+                placeholder=""
+              />
+              <label
+                for="full-name"
+                class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+                >Department</label
+              >
+            </div>
+          </div>
+          <div id="input-row" class="flex gap-3 mt-6">
+            <div class="relative w-3/4">
+              <textarea
+                rows="3"
+                id="fuul-name"
+                type="email"
+                class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+                placeholder=""
+              ></textarea>
+              <label
+                for="full-name"
+                class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+                >Challenge you are facing.</label
+              >
+            </div>
+          </div>
+          <button
+            class="bg-navy-blue text-base px-10 mt-5 py-3 text-main-color rounded-2xl cursor-pointer hover:-translate-y-1"
+          >
+            Send your Query &rarr;
+          </button>
+        </div>
+        </form>
+
+    </section>
+{%  endblock  %}

@@ -1,0 +1,53 @@
+{% extends './layouts/base.html' %} {% block content %}
+<section
+  id="login"
+  class="w-full h-[100vh] bg-gradient-to-b from-[#f3e7e9] to-[#e3eeff] flex justify-center items-center"
+>
+  <form
+    id="container"
+    class="w-[40%] bg-gradient-to-b from-[#ffffff] to-[#dfe9f3] p-[5%] shadow-md"
+  >
+    <p class="mb-6 font-bold text-4xl">Welcome Back</p>
+    <div id="input-row" class="">
+      <div class="relative w-full">
+        <input
+          id="fuul-name"
+          type="email"
+          class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          placeholder=""
+        />
+        <label
+          for="full-name"
+          class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+          >Username</label
+        >
+      </div>
+    </div>
+    <div id="input-row" class="my-5">
+      <div class="relative w-full">
+        <input
+          id="fuul-name"
+          type="password"
+          class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          placeholder=""
+        />
+        <label
+          for="full-name"
+          class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+          >Password</label
+        >
+      </div>
+    </div>
+    <button
+      class="bg-navy-blue text-base w-full my-5 py-4 text-main-color rounded-2xl cursor-pointer hover:text-gold hover:border-2 hover:border-navy-blue hover:bg-transparent transition duration-500"
+    >
+      Login &rarr;
+    </button>
+    <a
+      href="{{  url_for('index')  }} "
+      class="w-full text-center text-navy-blue hover:text-gold"
+      >Go Back</a
+    >
+  </form>
+</section>
+{% endblock %}
