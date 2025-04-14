@@ -31,19 +31,22 @@
         The first predictive staff scheduling platform designed specifically for
         the ministry works
       </p>
-      <div class="relative w-fit group">
-        <div
-          class="absolute -inset-0.5 bg-gradient-to-r from-accent-color to-purple-600 rounded-lg blur opacity-100 group-hover:-inset-1 transition duration-200"
-        ></div>
-        <button
-          class="relative bg-main-color text-base font-medium mt-10 px-10 py-6 text-accent-color rounded-lg cursor-pointer leading-0 flex group-hover:-translate-y-1 transition duration-200"
-        >
-          <span class="text-navy-blue pr-2">Facing a Challenge ?</span>
-          <span
-            class="text-gold pl-2 group-hover:text-navy-blue transition duration-200"
-            >Contact ICT &rarr;</span
+      <div>
+        <div class="relative w-fit group">
+          <div
+            class="absolute -inset-0.5 bg-gradient-to-r from-accent-color to-purple-600 rounded-lg blur opacity-100 group-hover:-inset-1 transition duration-200"
+          ></div>
+          <button
+            class="relative bg-main-color text-base font-medium mt-10 px-10 py-6 text-accent-color rounded-lg cursor-pointer leading-0 flex group-hover:-translate-y-1 transition duration-200"
           >
-        </button>
+            <span class="text-navy-blue pr-2">Facing a Challenge ?</span>
+            <span
+              class="text-gold pl-2 group-hover:text-navy-blue transition duration-200"
+              >Contact ICT &rarr;</span
+            >
+          </button>
+        </div>
+        <button class="bg-card-gray text-sm text-navy-blue px-8 py-2">Give it a try</button>
       </div>
     </section>
     <section
@@ -62,15 +65,15 @@
           >
           you are facing today.
         </p>
-        <form action="#" method="post">
+        <form action="{{ url_for('index') }}" method="post">
+          {{ form.csrf_token  }}
           <div id="input-row" class="flex gap-3">
             <div class="relative w-1/2">
-              <input
-                id="fuul-name"
-                type="email"
+              {{
+                form.name(
                 class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
-                placeholder=""
-              />
+                )
+              }}
               <label
                 for="full-name"
                 class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
@@ -78,12 +81,10 @@
               >
             </div>
             <div class="relative w-1/2">
-              <input
-                id="fuul-name"
-                type="email"
-                class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
-                placeholder=""
-              />
+              {{form.office_number(
+                class='w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none'
+                )
+              }}
               <label
                 for="full-name"
                 class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
@@ -93,12 +94,10 @@
           </div>
           <div id="input-row" class="flex gap-3 mt-6">
             <div class="relative w-1/2">
-              <input
-                id="fuul-name"
-                type="email"
+              {{form.department(
                 class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
-                placeholder=""
-              />
+              )
+              }}
               <label
                 for="full-name"
                 class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
@@ -108,25 +107,20 @@
           </div>
           <div id="input-row" class="flex gap-3 mt-6">
             <div class="relative w-3/4">
-              <textarea
-                rows="3"
-                id="fuul-name"
-                type="email"
+              {{form.challange(
+                rows="3",
                 class="w-full peer block border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
-                placeholder=""
-              ></textarea>
+              )}}
               <label
                 for="full-name"
                 class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
-                >Challenge you are facing.</label
+                >What challenge are you facing.</label
               >
             </div>
           </div>
-          <button
+          {{form.submit(
             class="bg-navy-blue text-base px-10 mt-5 py-3 text-main-color rounded-2xl cursor-pointer hover:-translate-y-1"
-          >
-            Send your Query &rarr;
-          </button>
+          )}}
         </div>
         </form>
 

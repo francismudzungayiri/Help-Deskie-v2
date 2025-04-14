@@ -1,0 +1,12 @@
+#macro for tasks
+{% macro display_tasks(tasks)%}
+{% for task in tasks  %}
+<div class="w-1/4 shadow border-2 border-accent-color" href="#" >
+    <div class="card-body">
+      <h5 class="card-title">{{task.fullname}}</h5>
+      <p class="card-text">{{task.challange}}</p>
+    </div>
+    <a href="#" class="hover:text-accent-color hover:underline">Action</a>
+</div>
+{%endfor%}
+{%endmacro%}

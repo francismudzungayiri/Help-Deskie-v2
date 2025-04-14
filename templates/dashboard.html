@@ -1,0 +1,298 @@
+{% extends './layouts/base.html'%} {% block content %}
+{% import "./macros/tasks.html" as macros %}
+<section class="w-full h-[100vh] p-[2%] flex gap-5">
+  <div id="vertical-nav" class="w-1/6 p-4 h-full bg-card-gray rounded-lg">
+    <div id="logo">
+      <h1 href="#" class="text-2xl font-extrabold font-headings-play">
+        Help <span class="text-accent-color">Deskie</span>
+      </h1>
+      <div id="nav-links" class="mt-[10vh] w-full">
+        <span
+          data-tab="home"
+          class="btn p-2 mb-5 cursor-pointer text-navy-blue block font-bold border-l-4 border-navy-blue hover:font-bold hover:border-l-4 hover:border-navy-blue"
+          >Home</span
+        >
+        <span
+          data-tab="users"
+          class="btn p-2 mb-5 cursor-pointer font-light text-navy-blue block hover:font-bold hover:border-l-4 hover:border-navy-blue"
+          >Users</span
+        >
+        <span
+          data-tab="projects"
+          class="btn p-2 mb-5 cursor-pointer font-light text-navy-blue block hover:font-bold hover:border-l-4 hover:border-navy-blue"
+          >Projects</span
+        >
+        <span
+          data-tab="pending-tasks"
+          class="btn p-2 mb-5 cursor-pointer font-light text-navy-blue block hover:font-bold hover:border-l-4 hover:border-navy-blue"
+          >Pending Tasks</span
+        >
+        <span
+          data-tab="running-tasks"
+          class="btn p-2 mb-5 cursor-pointer font-light text-navy-blue block hover:font-bold hover:border-l-4 hover:border-navy-blue"
+          >Running Tasks</span
+        >
+        <span
+          data-tab="ended-tasks"
+          class="btn p-2 mb-5 cursor-pointer font-light text-navy-blue block hover:font-bold hover:border-l-4 hover:border-navy-blue"
+          >Ended Tasks</span
+        >
+      </div>
+    </div>
+  </div>
+  <div id="right-main" class="w-full h-full flex flex-col gap-5">
+    <div id="top-card" class="w-full p-[2%] rounded-lg bg-card-gray h-[10vh]">
+      <h1 class="text-2xl text-navy-blue font-bold font-headings-play">
+        Welcome Back,
+        <span
+          class="bg-gradient-to-r from-gold to-purple-600 text-transparent bg-clip-text"
+          >{{ firstname }}</span
+        >
+      </h1>
+    </div>
+    <div id="bottom-card" class="h-[87%] rounded-lg w-full bg-card-gray">
+      <!-- HOME -->
+      <div id="home" class="pane w-full h-full p-[3%]">
+        <div class="flex justify-between">
+          <div>
+            <h1 class="text-3xl text-navy-blue mb-1">Dashboard</h1>
+            <p class="">
+              Plan, Prioritize, and accomplish your tasks with ease
+            </p>
+          </div>
+          <div>
+            <button
+              id="add-user-btn"
+              class="px-4 py-3 mr-4 bg-navy-blue text-main-color text-lg cursor-pointer rounded-4xl hover:border-2 hover:border-navy-blue hover:bg-transparent hover:text-navy-blue"
+            >
+              + Add user
+            </button>
+            <button
+              class="px-4 py-3 mr-4 bg-transparent border-2 border-navy-blue rounded-4xl"
+            >
+              + Add task
+            </button>
+          </div>
+        </div>
+        <!--TOTAL TASKS CATERGORY -->
+        <div class="mt-5 flex justify-between flex-rowßßß flex-wrap">
+          <div
+            class="py-4 px-6 rounded-2xl bg-navy-blue text-main-color shadow"
+          >
+            <p class="text-lg font-normal">Total Tasks</p>
+            <p class="my-2 font-bold text-5xl">67</p>
+            <p class="text-sm font-light">
+              <span>20</span> an increase from last month
+            </p>
+          </div>
+          <div class="py-4 px-6 rounded-2xl bg-main-color text-navy-blue">
+            <p class="text-lg font-normal">Ended Tasks</p>
+            <p class="my-2 font-bold text-5xl">12</p>
+            <p class="text-sm font-light">
+              <span>6</span> an increase from last yesterday
+            </p>
+          </div>
+          <div class="py-4 px-6 rounded-2xl bg-main-color text-navy-blue">
+            <p class="text-lg font-normal">Running Tasks</p>
+            <p class="my-2 font-bold text-5xl">6</p>
+            <p class="text-sm font-light">
+              <span>3</span> an increase form last yesterday
+            </p>
+          </div>
+          <div class="py-4 px-6 rounded-2xl bg-main-color text-navy-blue">
+            <p class="text-lg font-normal">Pending Tasks</p>
+            <p class="my-2 font-bold text-5xl">3</p>
+            <p class="text-sm font-light">
+              <span>2</span> an increase form last yesterday
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- users-->
+      <div id="users" class="pane hidden p-[3%]">
+        <h1
+          class="text-2xl w-fit font-font font-subheadings-merriweather bg-gradient-to-r from-gold to-accent-color bg-transparent bg-clip-text"
+        >
+          List of users
+        </h1>
+        <div class="flex gap-4 bg-card-gray p-4 mt-5 shadow">
+          <input
+            type="search"
+            name="search_user"
+            id="search"
+            class="p-3 border-2 border-navy-blue text-navy-blue w-[50%]"
+            placeholder="search user"
+          />
+          <button
+            class="px-4 py-2 text-main-color bg-navy-blue rounded-sm hover:bg-transparent hover:border-2 hover:border-navy-blue hover:text-navy-blue"
+          >
+            Search
+          </button>
+        </div>
+
+        <div
+          class="mt-5 relative max-h-[60%] overflow-x-auto shadow-md sm:rounded-lg"
+        >
+          <table class="w-full text-sm text-left rtl:text-right text-dark-gray">
+            <thead
+              class="text-xs text-navy-blue uppercase font-medium bg-light-gray"
+            >
+              <tr>
+                <th scope="col" class="px-6 py-3">Full name</th>
+                <th scope="col" class="px-6 py-3">System role</th>
+                <th scope="col" class="px-6 py-3">Position</th>
+                <th scope="col" class="px-6 py-3">Status</th>
+                <th scope="col" class="px-6 py-3">Action</th>
+              </tr>
+            </thead>
+            {%for user in users:%}
+            <tbody>
+              <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+                  {{user['first_name']}} {{ user['last_name']}}
+                </th>
+                <td class="px-6 py-4">{{ user['system_role'] }}</td>
+                <td class="px-6 py-4">{{ user['position'] }}</td>
+                <td class="px-6 py-4">available</td>
+                <td class="px-6 py-4">
+                  <a
+                    href="#"
+                    class="font-medium text-accent-color hover:underline"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+            {% endfor%}
+          </table>
+        </div>
+      </div>
+      <!--Projects-->
+      <div id="projects" class="pane hidden">
+        <h1>Projects</h1>
+      </div>
+      <!-- Pending Tasks -->
+      <div id="pending-tasks" class="pane hidden">
+            <h1>Pending Tasks</h1>
+            
+            {% if pending_tasks %}
+                <p>Number of tasks: {{ pending_tasks|length }}</p>
+                {{ macros.display_tasks(pending_tasks) }}
+            {% else %}
+                <p>No pending tasks found</p>
+            {% endif %}
+        </div>
+      <!-- Running Tasks -->
+      <div id="running-tasks" class="pane hidden">
+        <h1>Running Tasks</h1>
+      </div>
+      <!--Ended Tasks-->
+      <div id="ended-tasks" class="pane hidden">
+        <h1>Ended Tasks</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ADD USERS SECTION-->
+<section
+  id="add-user-modal"
+  class="h-[100vh] absolute top-0 left-0 w-full bg-gray-100/10 rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-100 hidden justify-center items-center"
+>
+  <div class="w-[60%] bg-main-color rounded-2xl p-[5%]">
+    <img
+      id="modal-close"
+      src="../static/img/icons/red-close-icon.svg"
+      alt=""
+      class="absolute top-[10%] left-[90%] w-8 h-8 cursor-pointer hover:opacity-50"
+    />
+    <h1
+      class="font-bold text-2xl bg-gradient-to-r from-navy-blue to-gold text-transparent bg-clip-text"
+    >
+      ADD TEAM MEMBER
+    </h1>
+
+    <form
+      action="{{ url_for('dashboard', id = id ) }}"
+      class="mt-5 w-full"
+      method="post"
+    >
+      {{ add_member_form.hidden_tag() }}
+      <div class="flex gap-4 mt-5">
+        <div class="relative w-1/2">
+          {{ add_member_form.firstname( class="w-full peer block border-zinc-400
+          border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          ) }}
+          <label
+            for="full-name"
+            class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+            >First Name</label
+          >
+        </div>
+        <div class="relative w-1/2">
+          {{ add_member_form.lastname( class="w-full peer block border-zinc-400
+          border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          ) }}
+          <label
+            for="last-name"
+            class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+            >Last Name</label
+          >
+        </div>
+      </div>
+
+      <div class="flex gap-4 mt-5">
+        <div class="relative w-1/2">
+          {{ add_member_form.username( class="w-full peer block border-zinc-400
+          border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          ) }}
+          <label
+            for="username"
+            class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+            >Username</label
+          >
+        </div>
+        <div class="relative w-1/2">
+          {{ add_member_form.email( class="w-full peer block border-zinc-400
+          border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          ) }}
+          <label
+            for="email"
+            class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+            >Email Adress</label
+          >
+        </div>
+      </div>
+      <div class="flex gap-4 mt-5">
+        <div class="relative w-1/2">
+          {{ add_member_form.system_role( class="w-full peer block mt-8
+          border-zinc-400 border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue
+          focus:outline-none" ) }}
+          <label
+            for="username"
+            class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+            >System Role</label
+          >
+        </div>
+        <div class="relative w-1/2">
+          {{ add_member_form.password( class="w-full peer block border-zinc-400
+          border-b-2 px-4 pb-1 pt-6 focus:border-b-navy-blue focus:outline-none"
+          ) }}
+          <label
+            for="email"
+            class="absolute text-zinc-400 left-4 top-4 origin-[0] -translate-y-3 scale-75 duration-150 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-3 peer-focus:scale-75"
+            >Password</label
+          >
+        </div>
+      </div>
+      <div class="flex mt-5">
+        {{add_member_form.submit( class="bg-navy-blue text-base px-10 mt-5 py-3
+        text-main-color rounded-2xl cursor-pointer hover:-translate-y-1" )}}
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock%} {% block jscontent %}
+
+<script src="../../static/js/main.js"></script>
+
+{% endblock %}
